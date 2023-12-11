@@ -361,8 +361,8 @@ const Chart = (props: any) => {
           </b>
         </div>
         <img
-          src="https://EijiGorilla.github.io/Symbols/Viaduct_Images/Viaduct_All_Logo.svg"
-          alt="Utility Logo"
+          src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
+          alt="Depot Buildings Logo"
           height={'17%'}
           width={'17%'}
           style={{ padding: '10px', margin: 'auto' }}
