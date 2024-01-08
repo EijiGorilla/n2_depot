@@ -147,7 +147,7 @@ function renderDepotLayer() {
 
 export const depotLayer = new SceneLayer({
   portalItem: {
-    id: '95a3d13d629c49cbb011b78576be7310',
+    id: 'dac4c48990444a889ad7dc110749a880',
   },
   elevationInfo: {
     mode: 'absolute-height', //absolute-height, relative-to-ground
