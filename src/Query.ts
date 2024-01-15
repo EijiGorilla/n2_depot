@@ -1,7 +1,41 @@
-import { depotLayer } from './layers';
+import { dateTable, depotLayer } from './layers';
 import StatisticDefinition from '@arcgis/core/rest/support/StatisticDefinition';
 import { view } from './Scene';
 import { defaultName } from './dropdownData';
+
+// Updat date
+export async function dateUpdate() {
+  const monthList = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const query = dateTable.createQuery();
+  query.where = "project = 'N2'" + ' AND ' + "category = 'Land Acquisition'";
+
+  return dateTable.queryFeatures(query).then((response: any) => {
+    const stats = response.features;
+    const dates = stats.map((result: any) => {
+      const date = new Date(result.attributes.date);
+      const year = date.getFullYear();
+      const month = monthList[date.getMonth()];
+      const day = date.getDay();
+      const final = year < 1990 ? '' : `${month} ${day}, ${year}`;
+      return final;
+    });
+    return dates;
+  });
+}
 
 // Generate chart data
 const depotType = [
