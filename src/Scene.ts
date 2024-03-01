@@ -7,18 +7,11 @@ import Expand from '@arcgis/core/widgets/Expand';
 import GroupLayer from '@arcgis/core/layers/GroupLayer';
 import Compass from '@arcgis/core/widgets/Compass';
 
-import { chainageLayer, rowLayer, stationLayer, depotLayer, buildingSpotLayer } from './layers';
+import { rowLayer, stationLayer, depotLayer, buildingSpotLayer } from './layers';
 
 export const map = new Map({
   basemap: 'dark-gray-vector', // "streets-night-vector", basemap
   ground: 'world-elevation',
-});
-
-const alignmentGroupLayer = new GroupLayer({
-  title: 'Alignment',
-  visible: true,
-  visibilityMode: 'independent',
-  layers: [chainageLayer, rowLayer], //stationLayer,
 });
 
 const depotGroupLayer = new GroupLayer({
@@ -28,8 +21,8 @@ const depotGroupLayer = new GroupLayer({
   layers: [buildingSpotLayer, depotLayer],
 });
 
+map.add(rowLayer);
 map.add(depotGroupLayer);
-map.add(alignmentGroupLayer);
 map.add(stationLayer);
 
 export const view = new SceneView({

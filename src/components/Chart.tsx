@@ -102,7 +102,7 @@ const Chart = (props: any) => {
   const chartIconWidth = 35;
   const chartIconHeight = 35;
   const chartIconPositionX = -21;
-  const chartPaddingRightIconLabel = 45;
+  const chartPaddingRightIconLabel = 10;
 
   const chartSeriesFillColorComp = '#0070ff';
   const chartSeriesFillColorIncomp = '#000000';
