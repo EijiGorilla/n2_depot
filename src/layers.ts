@@ -233,5 +233,4 @@ export const buildingSpotLayer = new FeatureLayer({
   renderer: buildingSpotSymbol,
   labelingInfo: [buildingSpotLabelClass],
   popupEnabled: false,
-  outFields: ['*'],
 });
