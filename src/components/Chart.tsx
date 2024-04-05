@@ -14,6 +14,7 @@ import {
   thousands_separators,
   zoomToLayer,
 } from '../Query';
+import { CalciteLabel } from '@esri/calcite-components-react';
 
 // Dispose function
 function maybeDisposeRoot(divId: any) {
@@ -350,32 +351,30 @@ const Chart = (props: any) => {
 
   return (
     <div>
-      <div className="totalProgressDiv">
-        <div>
-          <div className="totalProgressLabel">TOTAL PROGRESS</div>
-          <br />
-          <br />
-          <b className="totalProgressNumber">
-            {thousands_separators(progress[2])} %{' '}
-            <div className="totalProgressNumber2">({thousands_separators(progress[0])})</div>
-          </b>
-        </div>
-        <img
-          src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
-          alt="Depot Buildings Logo"
-          height={'17%'}
-          width={'17%'}
-          style={{ padding: '10px', margin: 'auto' }}
-        />
-      </div>
+      <CalciteLabel>TOTAL PROGRESS</CalciteLabel>
+      <CalciteLabel layout="inline">
+        <b className="totalProgressNumber">
+          {thousands_separators(progress[2])} %
+          <img
+            src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
+            alt="Depot Buildings Logo"
+            height={'40%'}
+            width={'40%'}
+            style={{ marginLeft: '180%', display: 'flex', marginTop: '-30%' }}
+          />
+          <div className="totalProgressNumber2">({thousands_separators(progress[0])})</div>
+        </b>
+      </CalciteLabel>
+
       <div
         id={chartID}
         style={{
           width: '22vw',
-          height: '55vh',
+          height: '60vh',
           backgroundColor: 'rgb(0,0,0,0)',
           color: 'white',
           marginRight: '10px',
+          marginTop: '9%',
         }}
       ></div>
     </div>

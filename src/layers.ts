@@ -135,7 +135,7 @@ function renderDepotLayer() {
 
 export const depotLayer = new SceneLayer({
   portalItem: {
-    id: 'bcc1444b895443e6bc1ad613f1b4c8fa',
+    id: 'd6b0f548cc5e41b4b4b9a6a0b01db21f',
     portal: {
       url: 'https://gis.railway-sector.com/portal',
     },
@@ -221,7 +221,7 @@ const buildingSpotLabelClass = new LabelClass({
 
 export const buildingSpotLayer = new FeatureLayer({
   portalItem: {
-    id: '2094800c80ed408e948ccc3edfdf8c90',
+    id: '707e01468886463499f7273bdc7fdc8d',
     portal: {
       url: 'https://gis.railway-sector.com/portal',
     },
