@@ -6,7 +6,7 @@ import Search from '@arcgis/core/widgets/Search';
 import Expand from '@arcgis/core/widgets/Expand';
 import GroupLayer from '@arcgis/core/layers/GroupLayer';
 import Compass from '@arcgis/core/widgets/Compass';
-
+import Measurement from '@arcgis/core/widgets/Measurement';
 import { rowLayer, stationLayer, depotLayer, buildingSpotLayer } from './layers';
 
 export const map = new Map({
@@ -59,10 +59,9 @@ export const layerList = new LayerList({
 });
 
 // Compass
-var compass = new Compass({
+export const compass = new Compass({
   view: view,
 });
-view.ui.add(compass, 'top-right');
 
 // Search
 const sources = [
@@ -78,7 +77,7 @@ const sources = [
   },
 ];
 
-var searchWidget = new Search({
+const searchWidget = new Search({
   view: view,
   locationEnabled: false,
   allPlaceholder: 'Chainage or pier no',
@@ -86,12 +85,16 @@ var searchWidget = new Search({
   sources: sources,
 });
 
-const searchExpand = new Expand({
+export const searchExpand = new Expand({
   view: view,
   content: searchWidget,
   expandIconClass: 'esri-icon-search',
   group: 'top-right',
 });
-view.ui.add(searchExpand, {
-  position: 'top-right',
+
+// Measurement Tool
+export const measurement = new Measurement({
+  view: view,
+  activeTool: undefined,
+  container: undefined,
 });

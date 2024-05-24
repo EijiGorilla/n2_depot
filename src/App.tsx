@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useRef, useEffect, useState } from 'react';
-import { map, view, basemaps, layerList } from './Scene';
+import { map, view, basemaps, layerList, searchExpand, measurement, compass } from './Scene';
 import Select from 'react-select';
 import './index.css';
 import './App.css';
@@ -10,6 +10,7 @@ import '@esri/calcite-components/dist/components/calcite-list-item';
 import '@esri/calcite-components/dist/components/calcite-shell-panel';
 import '@esri/calcite-components/dist/components/calcite-action';
 import '@esri/calcite-components/dist/components/calcite-action-bar';
+import '@esri/calcite-components/dist/components/calcite-button';
 import '@esri/calcite-components/dist/calcite/calcite.css';
 import {
   CalciteShell,
@@ -21,6 +22,7 @@ import {
   CalcitePanel,
   CalciteList,
   CalciteListItem,
+  CalciteButton,
 } from '@esri/calcite-components-react';
 import Chart from './components/Chart';
 import { defaultName, dropdownData } from './dropdownData';
@@ -31,6 +33,10 @@ function App() {
 
   const mapDiv = useRef(null);
   const layerListDiv = useRef<HTMLDivElement | undefined | any>(null);
+
+  // Measurement tools
+  const [activeAnalysis, setActiveAnalysis] = useState<any | undefined>('');
+  const measurementToolDiv = useRef<HTMLDivElement | undefined | any>(null);
 
   // For Calcite Design
   const calcitePanelBasemaps = useRef<HTMLDivElement | undefined | any>(null);
@@ -59,6 +65,17 @@ function App() {
     }
   });
 
+  // Measurement Tool
+  useEffect(() => {
+    if (activeAnalysis === 'directLineMeasurementAnalysisButton') {
+      measurement.activeTool = 'direct-line';
+    } else if (activeAnalysis === 'areaMeasurementAnalysisButton') {
+      measurement.activeTool = 'area';
+    } else if (activeAnalysis === 'clearButton') {
+      measurement.clear();
+    }
+  }, [activeAnalysis]);
+
   useEffect(() => {
     setDepotBuildingName({ name: defaultName });
 
@@ -81,6 +98,16 @@ function App() {
       map.ground.navigationConstraint = {
         type: 'none',
       };
+
+      // Measurement tool
+      measurement.container = measurementToolDiv.current;
+      const measureButton = document.getElementById('measurementToolMenu') as HTMLElement;
+      view.ui.add(measureButton, 'top-right');
+      view.ui.add(compass, 'top-right');
+
+      view.ui.add(searchExpand, {
+        position: 'top-right',
+      });
 
       view.container = mapDiv.current;
       view.ui.components = [];
@@ -277,6 +304,36 @@ function App() {
         </div>
 
         <div className="mapDiv" ref={mapDiv}></div>
+        {/* Measurement Tools */}
+        <div
+          id="measurementToolMenu"
+          className="esri-widget"
+          style={{
+            padding: '0.5em',
+            maxWidth: '110px',
+            width: '200px',
+            height: '45px',
+          }}
+        >
+          <CalciteButton
+            id="directLineMeasurementAnalysisButton"
+            icon-start="measure-line"
+            title="Interact with direct line measurement"
+            onClick={(event: any) => setActiveAnalysis(event.currentTarget.id)}
+          ></CalciteButton>
+          <CalciteButton
+            id="areaMeasurementAnalysisButton"
+            icon-start="measure-area"
+            title="Interact with area measurement"
+            onClick={(event: any) => setActiveAnalysis(event.currentTarget.id)}
+          ></CalciteButton>
+          <CalciteButton
+            id="clearButton"
+            icon-start="trash"
+            title="Clear measurement"
+            onClick={(event: any) => setActiveAnalysis(event.currentTarget.id)}
+          ></CalciteButton>
+        </div>
       </CalciteShell>
     </>
   );
