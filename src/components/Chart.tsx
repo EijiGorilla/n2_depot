@@ -351,21 +351,37 @@ const Chart = (props: any) => {
 
   return (
     <div>
-      <CalciteLabel>TOTAL PROGRESS</CalciteLabel>
-      <CalciteLabel layout="inline">
-        <b className="totalProgressNumber">
-          {thousands_separators(progress[2])} %
-          <img
-            src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
-            alt="Depot Buildings Logo"
-            height={'40%'}
-            width={'40%'}
-            style={{ marginLeft: '180%', display: 'flex', marginTop: '-30%' }}
-          />
-          <div className="totalProgressNumber2">({thousands_separators(progress[0])})</div>
-        </b>
-      </CalciteLabel>
-
+      <div
+        style={{
+          display: 'flex',
+          // borderStyle: 'solid',
+          // paddingBottom: '10px',
+        }}
+      >
+        <dl style={{ textIndent: '20pxs' }}>
+          <dt style={{ color: 'white', fontSize: '1.7rem', paddingLeft: '15px' }}>
+            Total Progress
+          </dt>
+          <dd
+            style={{
+              color: '#6ede00',
+              fontSize: '2.6rem',
+              fontWeight: 'bold',
+              lineHeight: '1.2',
+            }}
+          >
+            {thousands_separators(progress[2])} %
+          </dd>
+          <dd style={{ color: 'white' }}>({thousands_separators(progress[0])})</dd>
+        </dl>
+        <img
+          src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
+          alt="Depot Buildings Logo"
+          height={'20%'}
+          width={'20%'}
+          style={{ margin: 'auto' }}
+        />
+      </div>
       <div
         id={chartID}
         style={{

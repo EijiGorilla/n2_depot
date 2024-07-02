@@ -148,13 +148,13 @@ function App() {
         <header
           slot="header"
           id="header-title"
-          style={{ display: 'flex', width: '100%', padding: '0 1rem' }}
+          style={{ display: 'flex', width: '100%', height: '70px', padding: '0 1rem' }}
         >
           <img
             src="https://EijiGorilla.github.io/Symbols/Projec_Logo/DOTr_Logo_v2.png"
             alt="DOTr Logo"
-            height={'2.9%'}
-            width={'2.9%'}
+            height={'50px'}
+            width={'50px'}
             style={{ marginBottom: 'auto', marginTop: 'auto' }}
           />
           <b className="headerTitle">N2 DEPOT</b>
@@ -164,7 +164,7 @@ function App() {
             <div className="dropdownFilterLayout">
               <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}>Buildings</b>
               <Select
-                placeholder="Select Depot Buildings"
+                placeholder="Select Buildings"
                 value={depotBuildingName}
                 options={dropdownData}
                 onChange={handleMunicipalityChange}
@@ -177,8 +177,8 @@ function App() {
           <img
             src="https://EijiGorilla.github.io/Symbols/Projec_Logo/GCR LOGO.png"
             alt="GCR Logo"
-            height={'4.4%'}
-            width={'4.4%'}
+            height={'50px'}
+            width={'70px'}
             style={{
               marginBottom: 'auto',
               marginTop: 'auto',

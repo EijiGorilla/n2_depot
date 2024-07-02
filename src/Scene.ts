@@ -23,7 +23,7 @@ const depotGroupLayer = new GroupLayer({
 
 map.add(rowLayer);
 map.add(depotGroupLayer);
-map.add(stationLayer);
+// map.add(stationLayer);
 
 export const view = new SceneView({
   container: undefined,

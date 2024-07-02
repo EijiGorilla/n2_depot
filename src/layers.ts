@@ -171,7 +171,7 @@ renderDepotLayer();
 /* building spot layer */
 const buildingSpotSymbol = new SimpleRenderer({
   symbol: new SimpleMarkerSymbol({
-    size: 5,
+    size: 2,
     color: 'white',
     outline: {
       // autocasts as new SimpleLineSymbol()
