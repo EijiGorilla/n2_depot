@@ -27,6 +27,7 @@ import {
 import Chart from './components/Chart';
 import { defaultName, dropdownData } from './dropdownData';
 import { dateUpdate } from './Query';
+import { depotLayer } from './layers';
 
 function App() {
   const [asOfDate, setAsOfDate] = useState<undefined | any | unknown>(null);
@@ -48,6 +49,14 @@ function App() {
 
   // For dropdown filter
   const [depotBuildingName, setDepotBuildingName] = useState<null | any>(null);
+
+  //
+  const [depotLayerLoaded, setDepotLayerLoaded] = useState<any>();
+  useEffect(() => {
+    depotLayer.load().then(() => {
+      setDepotLayerLoaded(depotLayer.loadStatus);
+    });
+  });
 
   useEffect(() => {
     if (activeWidget) {
@@ -143,7 +152,9 @@ function App() {
     <>
       <CalciteShell>
         <CalciteTabs slot="panel-end" style={{ width: '25vw' }}>
-          <Chart depotname={depotBuildingName === null ? '' : depotBuildingName.name} />
+          {depotLayerLoaded === 'loaded' && (
+            <Chart depotname={depotBuildingName === null ? '' : depotBuildingName.name} />
+          )}
         </CalciteTabs>
         <header
           slot="header"
