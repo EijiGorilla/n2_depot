@@ -41,8 +41,6 @@ const Chart = (props: any) => {
     generateTotalProgress(props.depotname).then((response: any) => {
       setProgress(response);
     });
-
-    zoomToLayer(depotLayer);
   }, [props.depotname]);
 
   // type
@@ -113,6 +111,7 @@ const Chart = (props: any) => {
 
   // Utility Chart
   useEffect(() => {
+    zoomToLayer(depotLayer);
     maybeDisposeRoot(chartID);
 
     var root = am5.Root.new(chartID);
