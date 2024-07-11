@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useRef, useEffect, useState } from 'react';
-import { map, view, basemaps, layerList, searchExpand, measurement, compass } from './Scene';
+import { map, view, basemaps, layerList, measurement, compass } from './Scene';
 import Select from 'react-select';
 import './index.css';
 import './App.css';
@@ -114,10 +114,6 @@ function App() {
       view.ui.add(measureButton, 'top-right');
       view.ui.add(compass, 'top-right');
 
-      view.ui.add(searchExpand, {
-        position: 'top-right',
-      });
-
       view.container = mapDiv.current;
       view.ui.components = [];
       view.ui.empty('top-left');
@@ -210,7 +206,7 @@ function App() {
             <CalciteAction
               data-action-id="layers"
               icon="layers"
-              text="layers"
+              text="Layers"
               id="layers"
               //textEnabled={true}
               onClick={(event: any) => {
@@ -222,7 +218,7 @@ function App() {
             <CalciteAction
               data-action-id="basemaps"
               icon="basemap"
-              text="basemaps"
+              text="Basemaps"
               id="basemaps"
               onClick={(event: any) => {
                 setNextWidget(event.target.id);
@@ -282,7 +278,13 @@ function App() {
               <div className="informationDiv">
                 <ul>
                   <li>
-                    <b>Click</b> the callout depot names to zoom and update the progress chart.
+                    You can filter and zoom to individual depot buildings using the dropdown list in
+                    the header panel.
+                  </li>
+                  <li>
+                    You can view either 'Complete' or 'Incomplete' progress on individual structural
+                    components of a depot building over the map. Please click it in the chart
+                    series.
                   </li>
                 </ul>
               </div>

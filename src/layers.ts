@@ -112,6 +112,9 @@ function renderDepotLayer() {
   });
 
   for (var i = 0; i < colorDepot.length; i++) {
+    if (i === 2) {
+      continue;
+    }
     renderer.addUniqueValueInfo({
       value: i + 1,
       label: statusConstruction.find((emp: any) => emp.value === i + 1)?.category,

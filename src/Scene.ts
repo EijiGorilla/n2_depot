@@ -64,33 +64,33 @@ export const compass = new Compass({
 });
 
 // Search
-const sources = [
-  {
-    layer: buildingSpotLayer,
-    searchFields: ['PIER'],
-    displayField: 'PIER',
-    exactMatch: false,
-    outFields: ['PIER'],
-    name: 'Pier No',
-    zoomScale: 1000,
-    placeholder: 'example: P-288',
-  },
-];
+// const sources = [
+//   {
+//     layer: buildingSpotLayer,
+//     searchFields: ['PIER'],
+//     displayField: 'PIER',
+//     exactMatch: false,
+//     outFields: ['PIER'],
+//     name: 'Pier No',
+//     zoomScale: 1000,
+//     placeholder: 'example: P-288',
+//   },
+// ];
 
-const searchWidget = new Search({
-  view: view,
-  locationEnabled: false,
-  allPlaceholder: 'Chainage or pier no',
-  includeDefaultSources: false,
-  sources: sources,
-});
+// const searchWidget = new Search({
+//   view: view,
+//   locationEnabled: false,
+//   allPlaceholder: 'Chainage or pier no',
+//   includeDefaultSources: false,
+//   sources: sources,
+// });
 
-export const searchExpand = new Expand({
-  view: view,
-  content: searchWidget,
-  expandIconClass: 'esri-icon-search',
-  group: 'top-right',
-});
+// export const searchExpand = new Expand({
+//   view: view,
+//   content: searchWidget,
+//   expandIconClass: 'esri-icon-search',
+//   group: 'top-right',
+// });
 
 // Measurement Tool
 export const measurement = new Measurement({
