@@ -6,7 +6,7 @@ import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import am5themes_Responsive from '@amcharts/amcharts5/themes/Responsive';
-
+import SceneLayerView from '@arcgis/core/views/layers/SceneLayerView';
 import '../App.css';
 import {
   generateChartData,
@@ -14,7 +14,7 @@ import {
   thousands_separators,
   zoomToLayer,
 } from '../Query';
-import { CalciteLabel } from '@esri/calcite-components-react';
+import { CalciteLabel, CalciteButton } from '@esri/calcite-components-react';
 
 // Dispose function
 function maybeDisposeRoot(divId: any) {
@@ -31,6 +31,8 @@ const Chart = (props: any) => {
   const chartRef = useRef<unknown | any | undefined>({});
   const [chartData, setChartData] = useState([]);
   const [progress, setProgress] = useState([]);
+  const [sceneLayerViewFilter, setSceneLayerViewFilter] = useState<SceneLayerView | any>();
+  const [resetButtonClicked, setResetButtonClicked] = useState<boolean>(false);
 
   const chartID = 'depot-bar';
   useEffect(() => {
@@ -319,17 +321,17 @@ const Chart = (props: any) => {
                 objID.push(obj);
               }
 
-              if (highlightSelect) {
-                highlightSelect.remove();
-              }
-              highlightSelect = layerView.highlight(objID);
-
-              view.on('click', () => {
-                layerView.filter = new FeatureFilter({
-                  where: undefined,
-                });
-                highlightSelect.remove();
-              });
+              // if (highlightSelect) {
+              //   highlightSelect.remove();
+              // }
+              // highlightSelect = layerView.highlight(objID);
+              setSceneLayerViewFilter(layerView);
+              // view.on('click', () => {
+              //   layerView.filter = new FeatureFilter({
+              //     where: undefined,
+              //   });
+              //   // highlightSelect.remove();
+              // });
             });
             layerView.filter = new FeatureFilter({
               where: expression,
@@ -347,6 +349,14 @@ const Chart = (props: any) => {
       root.dispose();
     };
   });
+
+  useEffect(() => {
+    if (resetButtonClicked) {
+      sceneLayerViewFilter.filter = new FeatureFilter({
+        where: undefined,
+      });
+    }
+  }, [resetButtonClicked]);
 
   return (
     <div>
@@ -389,9 +399,23 @@ const Chart = (props: any) => {
           backgroundColor: 'rgb(0,0,0,0)',
           color: 'white',
           marginRight: '10px',
-          marginTop: '9%',
+          marginTop: '4%',
         }}
       ></div>
+      <div
+        style={{
+          width: '50%',
+          marginLeft: '30%',
+          paddingTop: '10%',
+        }}
+      >
+        <CalciteButton
+          iconEnd="reset"
+          onClick={() => setResetButtonClicked(resetButtonClicked === false ? true : false)}
+        >
+          Reset Chart Filter
+        </CalciteButton>
+      </div>
     </div>
   );
 };
