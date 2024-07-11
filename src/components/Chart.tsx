@@ -351,7 +351,8 @@ const Chart = (props: any) => {
   });
 
   useEffect(() => {
-    if (resetButtonClicked) {
+    // const resetChartFilterButton = document.querySelector(`[id=filterButton]`) as HTMLDivElement;
+    if (resetButtonClicked && sceneLayerViewFilter) {
       sceneLayerViewFilter.filter = new FeatureFilter({
         where: undefined,
       });
@@ -403,6 +404,7 @@ const Chart = (props: any) => {
         }}
       ></div>
       <div
+        id="filterButton"
         style={{
           width: '50%',
           marginLeft: '30%',
