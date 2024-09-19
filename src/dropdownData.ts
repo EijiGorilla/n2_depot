@@ -16,6 +16,9 @@ export const dropdownData = [
     name: 'CPS',
   },
   {
+    name: 'CWT',
+  },
+  {
     name: 'DB1',
   },
   {
