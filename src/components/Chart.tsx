@@ -14,6 +14,7 @@ import {
   thousands_separators,
   zoomToLayer,
 } from '../Query';
+import '@esri/calcite-components/dist/components/calcite-label';
 import { CalciteLabel, CalciteButton } from '@esri/calcite-components-react';
 
 // Dispose function
@@ -359,43 +360,60 @@ const Chart = (props: any) => {
     }
   }, [resetButtonClicked]);
 
+  const primaryLabelColor = '#9ca3af';
+  const valueLabelColor = '#d1d5db';
+
   return (
     <div>
       <div
         style={{
-          display: 'flex',
-          // borderStyle: 'solid',
-          // paddingBottom: '10px',
+          color: primaryLabelColor,
+          fontSize: '1.3rem',
+          marginLeft: '13px',
+          marginTop: '10px',
+          marginBottom: '-10px',
         }}
       >
-        <dl style={{ textIndent: '20pxs' }}>
-          <dt style={{ color: 'white', fontSize: '1.7rem', paddingLeft: '15px' }}>
-            Total Progress
-          </dt>
-          <dd
-            style={{
-              color: '#6ede00',
-              fontSize: '2.6rem',
-              fontWeight: 'bold',
-              lineHeight: '1.2',
-            }}
-          >
-            {thousands_separators(progress[2])} %
-          </dd>
-          <dd style={{ color: 'white' }}>({thousands_separators(progress[0])})</dd>
-        </dl>
+        Total Progress
+      </div>
+      <CalciteLabel layout="inline">
+        <div
+          style={{
+            color: valueLabelColor,
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            fontFamily: 'calibri',
+            lineHeight: '1.2',
+            marginLeft: '20px',
+          }}
+        >
+          {thousands_separators(progress[2])} %
+        </div>
         <img
           src="https://EijiGorilla.github.io/Symbols/Depot_Buildings_Logo.svg"
           alt="Depot Buildings Logo"
-          height={'20%'}
-          width={'20%'}
-          style={{ margin: 'auto' }}
+          height={'60px'}
+          width={'60px'}
+          style={{ marginLeft: '80px', display: 'flex', marginTop: '-10px' }}
         />
+      </CalciteLabel>
+      <div
+        style={{
+          color: valueLabelColor,
+          fontSize: '1rem',
+          fontFamily: 'calibri',
+          lineHeight: '1.2',
+          marginLeft: '40px',
+          marginTop: '-10px',
+        }}
+      >
+        ({thousands_separators(progress[0])})
       </div>
+
       <div
         id={chartID}
         style={{
-          width: '22vw',
+          width: '20vw',
           height: '60vh',
           backgroundColor: 'rgb(0,0,0,0)',
           color: 'white',
