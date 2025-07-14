@@ -40,7 +40,7 @@ export const dropdownData = [
     name: 'DSS',
   },
   {
-    name: 'FPH1',
+    name: 'FP1',
   },
   {
     name: 'LGS',
@@ -79,9 +79,6 @@ export const dropdownData = [
     name: 'TRC',
   },
   {
-    name: 'TRCE',
-  },
-  {
     name: 'UCS',
   },
   {
@@ -94,10 +91,10 @@ export const dropdownData = [
     name: 'WOS',
   },
   {
-    name: 'WPH1',
+    name: 'WP1',
   },
   {
-    name: 'WPH2',
+    name: 'WP2',
   },
   {
     name: 'WRS',
@@ -105,7 +102,4 @@ export const dropdownData = [
   {
     name: 'WS',
   },
-  // {
-  //   name: 'WTS',
-  // },
 ];
