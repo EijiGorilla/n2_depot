@@ -342,8 +342,8 @@ const Chart = (props: any) => {
       });
       legend.data.push(series);
     }
-    makeSeries('Complete', 'comp');
-    makeSeries('Incomplete', 'incomp');
+    makeSeries('Completed', 'comp');
+    makeSeries('To be Constructed', 'incomp');
     chart.appear(1000, 100);
 
     return () => {
@@ -414,7 +414,7 @@ const Chart = (props: any) => {
         id={chartID}
         style={{
           width: '20vw',
-          height: '60vh',
+          height: '63vh',
           backgroundColor: 'rgb(0,0,0,0)',
           color: 'white',
           marginRight: '10px',
